@@ -23,9 +23,14 @@ const getFreshContext = () => {
 export default function useStateContext() {
     const {context, setContext} = useContext(stateContext);
     
-    return { context, 
+    return { 
+        context, 
         setContext: obj => {
             setContext({...context, ...obj})
+        },
+        resetContext: () => {
+            localStorage.removeItem("context");
+            setContext(getFreshContext())
         }
     }
 }

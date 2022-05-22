@@ -10,6 +10,9 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
+  typography:{
+    fontFamily: 'Akshar'
+  }
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
