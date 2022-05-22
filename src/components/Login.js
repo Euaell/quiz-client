@@ -2,6 +2,9 @@ import React from 'react';
 import { Button, TextField, Box, Card, CardContent, Typography } from '@mui/material';
 import Center from './Center';
 import useForm from '../hooks/useForm';
+import { createAPIEndpoint, ENDPOINTS } from '../api';
+import useStateContext from '../hooks/useStateContext';
+import { useNavigate } from "react-router-dom";
 
 const getFreshModel = () => ({
     name: "",
@@ -9,6 +12,11 @@ const getFreshModel = () => ({
 })
 
 export default function Login() {
+
+    const { context, setContext} = useStateContext();
+    const navigate = useNavigate();
+
+
     const {
         values,
         setValues,
@@ -19,16 +27,22 @@ export default function Login() {
 
     const login = e => {
         e.preventDefault();
-        if (validate()) return console.log(values);
+        if (validate()) 
+            createAPIEndpoint(ENDPOINTS.participant)
+                .post(values)
+                .then(res => {
+                    setContext({participantId: res.data.participantId});
+                    navigate("/quiz");
+                })
+                .catch(err => console.log(err));
         // console.log(errors)
     }
 
     const validate = () => {
         let temp = {}
-        temp.email = (/^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/).test(values.email) ? "" : "Email is not valid.";
+        temp.email = (/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/).test(values.email) ? "" : "Email is not valid.";
         temp.name = values.name !== "" ? "" : "Name required";
         setErrors(temp);
-        console.log(temp);
         return Object.values(temp).every(x => x === "");
     }
 
@@ -47,7 +61,7 @@ export default function Login() {
                         width: '90%'
                     }
                     }}>
-                    <form noValidate autoComplete='off' onSubmit={login}>
+                    <form noValidate autoComplete='on' onSubmit={login}>
                         <TextField
                             label="Email"
                             name="email"
