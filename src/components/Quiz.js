@@ -18,7 +18,7 @@ export default function Quiz() {
     const startTimer = () => {
         timer = setInterval(() => {
             setTimeTaken(prev => prev + 1)
-        }, [1000])
+        }, 1000)
     }
 
    useEffect(() => {
@@ -59,7 +59,7 @@ export default function Quiz() {
         qns.length === 0
         ? null : 
         <Center>
-            <Card sx={{maxWidth: 640, mx: "auto", mt: 5}}>
+            <Card sx={{maxWidth: 640, minWidth: 400, mx: "auto", mt: 5}}>
                 <CardHeader title={`Question ${qnIndex + 1} of 5`} 
                     action={<Typography>{getFormatedTime(timeTaken)}</Typography>}/>
                 <Box>
@@ -77,9 +77,9 @@ export default function Quiz() {
                     <List>
                         {qns[qnIndex].options.map((item, idx) =>
                             <ListItemButton key={idx} onClick={() => updateAnswer(qns[qnIndex].qnId, idx)}>
-                                <div>
+                                <Typography>
                                    <b>{String.fromCharCode(65 + idx) + ") "} </b>{item}
-                                </div>
+                                </Typography>
                             </ListItemButton>
                         )}
                     </List>
