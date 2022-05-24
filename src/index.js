@@ -7,21 +7,21 @@ import App from './App';
 import { ContextProvider } from './hooks/useStateContext';
 
 const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-  typography:{
-    fontFamily: 'Akshar'
-  }
+    palette: {
+        mode: 'dark',
+    },
+    typography:{
+        fontFamily: 'Akshar'
+    }
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ContextProvider>
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-        <App />
-    </ThemeProvider>
-  </ContextProvider>
+    <ContextProvider>
+        <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <App />
+        </ThemeProvider>
+    </ContextProvider>
 
 );

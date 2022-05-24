@@ -1,28 +1,25 @@
 ﻿import React, {useState} from 'react';
 import {Accordion, AccordionDetails, AccordionSummary, Box, CardMedia, List, ListItem, Typography} from "@mui/material";
 import {BASE_URL} from "../api";
-import { color } from "@mui/system";
 import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown"
 import {green, red, grey} from "@mui/material/colors";
 
 export default function Answer({qnAnswers}) {
     const [expanded, setExpanded] = useState(false);
-
+    
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     }
 
     const markCorrectOrNot = (qna, idx) => {
-        // console.log(`idx: ${idx} qna.answer: ${qna.answer} qna.selected: ${qna.selected}`)
-        // console.log(``)
-        if ([qna.answer, qna.selected].includes(idx)){
+        if (qna.selected === idx || qna.answer == idx){
             return { sx : {color: qna.answer == idx ? green[500] : red[500]}}
         }
     }
     
     return (
         <>
-            <Box sx={{mt: 5, width: "100%", maxWidth: 640, mx: "auto"}}>
+            <Box sx={{ mt: 5, width: "100%", maxWidth: 640, mx: "auto" }}>
                 {
                     qnAnswers.map((item, j) => (
                         <Accordion key={j} disableGutters

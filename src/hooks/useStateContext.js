@@ -43,8 +43,8 @@ export function ContextProvider({children}) {
     }, [context])
 
     return (
-    <stateContext.Provider value={{context, setContext}}>
-        {children}
-    </stateContext.Provider>
+        <stateContext.Provider value={{context, setContext}}>
+            {children}
+        </stateContext.Provider>
   )
 }

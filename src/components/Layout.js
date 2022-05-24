@@ -23,7 +23,7 @@ export default function Layout() {
                 sx={{flexGrow: 1}}>
                   Quiz App
               </Typography>
-              <Button onClick={logout}>Logout</Button>
+              <Button sx={{color: "red"}} onClick={logout}>Logout</Button>
           </Toolbar>
       </AppBar>
       <Outlet />
