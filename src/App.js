@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 import Authenticate from "./components/Authenticate";
+import {EmployeeInputWithIcon, Employees} from "./components/Employees";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
 					<Route path="/result" element={<Result />} />
 				</Route>
 			</Route>
+			<Route path="/employee" element={<Employees />} />
+			<Route path="/newEmployee" element={<EmployeeInputWithIcon />} />
 		</Routes>
     </BrowserRouter>
     // <div className="App">
