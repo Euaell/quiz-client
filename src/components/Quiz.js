@@ -66,7 +66,7 @@ export default function Quiz() {
                     <LinearProgress variant="determinate" value={(qnIndex + 1) * 100 / 5} />
                 </Box>
                 {qns[qnIndex].imageName === null
-                ? null
+                ? null 
                 : <CardMedia component="img"
                     image={BASE_URL + "images/" + qns[qnIndex].imageName}
                     sx={{width: "130px", m: "auto"}} />}

@@ -5,8 +5,8 @@ import {Navigate, Outlet} from "react-router";
 export default function Authenticate(props) {
     const { context } = useStateContext();
     return (
-        context.participantId == 0 
-        ? <Navigate to="/" /> :
+        context.userId == null ?
+            <Navigate to="/login" /> :
             <Outlet />
     );
 }

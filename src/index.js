@@ -8,7 +8,7 @@ import { ContextProvider } from './hooks/useStateContext';
 
 const darkTheme = createTheme({
     palette: {
-        mode: 'light',
+        mode: 'dark',
     },
     typography:{
         fontFamily: 'Akshar'
