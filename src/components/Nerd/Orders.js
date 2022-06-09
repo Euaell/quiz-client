@@ -1,4 +1,4 @@
-﻿import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {createAPIEndpoint, ENDPOINTS} from "../../api";
 import {
 	Button,
@@ -8,8 +8,6 @@ import {
 	TableRow
 } from "@mui/material";
 import {Box} from "@mui/system";
-import {red} from "@mui/material/colors";
-import {Navigate} from "react-router";
 import {useNavigate} from "react-router-dom";
 
 export function Orders () {
@@ -21,7 +19,6 @@ export function Orders () {
 			.fetch()
 			.then((res) => {
 				setOrders(res.data);
-				console.log(res.data);
 			})
 			.catch(console.error);
 	}

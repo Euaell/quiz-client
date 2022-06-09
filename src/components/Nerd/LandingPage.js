@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import Album from "./Album";
-function LandingPage(props) {
+function LandingPage() {
     
     return (
         <>
