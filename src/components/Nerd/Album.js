@@ -12,11 +12,12 @@
     Link,
     CssBaseline
 } from "@mui/material";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React, {useEffect, useState} from "react";
 import {BASE_URL, createAPIEndpoint, ENDPOINTS} from "../../api";
 import useStateContext from "../../hooks/useStateContext";
 import {useNavigate} from "react-router-dom";
+import {Telegram} from "@mui/icons-material";
+import TelegramIcon from '@mui/icons-material/Telegram';
 
 function Copyright() {
     return (
@@ -37,7 +38,6 @@ export default function Album() {
     
     return (
         <>
-            <CssBaseline />
             <main>
                 <Box
                     sx={{
@@ -85,6 +85,13 @@ export default function Album() {
             
             {/* Footer */}
             <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+                 
+                <Box sx={{margin: "auto",
+                    flexGrow: 1,
+                }}>
+                    <TelegramIcon color={"primary"}/>
+                </Box>
+                
                 <Typography variant="h6" align="center" gutterBottom>
                     Footer
                 </Typography>

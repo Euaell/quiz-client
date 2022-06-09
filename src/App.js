@@ -10,6 +10,8 @@ import AdminAuth from "./components/Nerd/AdminAuth";
 import {Add} from "./components/Nerd/Add";
 import {Edit} from "./components/Nerd/Edit";
 import Order from "./components/Nerd/Order";
+import {Orders} from "./components/Nerd/Orders";
+import Services from "./components/Nerd/Services";
 
 function App() {
   return (
@@ -22,8 +24,10 @@ function App() {
 				<Route path="/login" element={<SignIn />} />
 				<Route element={<Authenticate />}>
 					<Route path="/items" element={<DisMachines />} />
+					<Route path="/services" element={<Services />} />
 					<Route path="/" element={<AdminAuth />} >
 						<Route path="/add" element={<Add />} />
+						<Route path="/viewOrders" element={<Orders />} />
 						<Route path="/edit" element={<Edit />} />
 					</Route>
 					<Route path="/order" element={<Order />} />

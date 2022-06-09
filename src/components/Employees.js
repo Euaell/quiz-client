@@ -138,7 +138,7 @@ export function EmployeeInputWithIcon() {
             .then(() => navigate("/employee"))
             .catch(console.log)
     }
-
+    
     function addImage(event) {
         if (event.target.files && event.target.files[0]){
             let imageFile = event.target.files[0];
