@@ -15,18 +15,68 @@ import React, {useEffect, useState} from "react";
 import {BASE_URL, createAPIEndpoint, ENDPOINTS} from "../../api";
 import useStateContext from "../../hooks/useStateContext";
 import {useNavigate} from "react-router-dom";
-import TelegramIcon from '@mui/icons-material/Telegram';
+import {Facebook, Instagram, LinkedIn, Telegram, Twitter, YouTube} from "@mui/icons-material";
 
 function Copyright() {
 	return (
 		<Typography variant="body2" color="text.secondary" align="center">
 			{'Copyright © '}
-			<Link color="inherit" href="https://mui.com/">
+			<Link color="inherit" href="https://nerdethiopia.com/">
 				N.E.R.D
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
 		</Typography>
+	);
+}
+
+function Footer() {
+	return (
+		<Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+
+			<Box sx={{margin: "auto",
+				flexGrow: 1,
+			}}>
+
+			</Box>
+
+			<Typography variant="h6" align="center" gutterBottom>
+				<Link color="inherit" href="https://telegram.org/" target={"_blank"}>
+					<Telegram color={"primary"} />
+				</Link>
+				<Link color="inherit" href="https://www.instagram.com/nerds_center" target={"_blank"}>
+					<Instagram color={"primary"} />
+				</Link>
+				<Link color="inherit" href="https://www.linkedin.com/in/natnael-kebede-7b0438174" target={"_blank"}>
+					<LinkedIn color={"primary"} />
+				</Link>
+				<Link color="inherit" href="https://www.youtube.com/channel/UCQdmiY6mZHeYFR_T0-CLVMg" target={"_blank"}>
+					<YouTube color={"primary"} />
+				</Link>
+				<Link color="inherit" href="https://twitter.com/nerd68792965/" target={"_blank"}>
+					<Twitter color={"primary"} />
+				</Link>
+				<Link color={"inherit"} href="https://www.facebook.com/Neerrdd" target={"_blank"}>
+					<Facebook color={"primary"} />
+				</Link>
+			</Typography>
+			<Box sx={{margin: "auto",
+				flexGrow: 1,
+				width: "40%",
+			}}>
+				<Typography
+					variant="subtitle1"
+					align="center"
+					color="text.secondary"
+					component="p"
+				>
+					N.E.R.D (New Era Research & Development) provides a hacker space, educational content,
+					and private research and development including prototyping, development, and research.
+				</Typography>
+				<br/>
+				<Copyright />
+			</Box>
+		</Box>
 	);
 }
 
@@ -41,7 +91,7 @@ export default function Album() {
 					sx={{
 						bgcolor: 'background.paper',
 						pt: 8,
-						pb: 6,
+						pb: 8,
 					}}
 				>
 					<Container maxWidth="sm">
@@ -82,27 +132,7 @@ export default function Album() {
 			</main>
 
 			{/* Footer */}
-			<Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-
-				<Box sx={{margin: "auto",
-					flexGrow: 1,
-				}}>
-					<TelegramIcon color={"primary"}/>
-				</Box>
-
-				<Typography variant="h6" align="center" gutterBottom>
-					Footer
-				</Typography>
-				<Typography
-					variant="subtitle1"
-					align="center"
-					color="text.secondary"
-					component="p"
-				>
-					lorem epsom
-				</Typography>
-				<Copyright />
-			</Box>
+			<Footer />
 			{/* End footer */}
 		</>
 	);
@@ -110,7 +140,7 @@ export default function Album() {
 
 export function Machines() {
 	const [items, setItems] = useState([]);
-	const {context, setContext, setItem, resetItem} = useStateContext();
+	const {context, setItem, resetItem} = useStateContext();
 	const navigate = useNavigate();
 
 	function handleDelete(id) {
