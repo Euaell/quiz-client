@@ -66,8 +66,8 @@ export function SignUp() {
         temp.email = (/^[a-zA-Z\d]+@(?:[a-zA-Z\d]+\.)+[A-Za-z]+$/).test(values.email) ? "" : "Email is not valid.";
         temp.name = values.name !== "" ? "" : "Name required";
         temp.phone = "";
-        temp.password = "";
-        temp.confirmPassword = "";
+        temp.password = values.password.length >= 6 ? "" : "Password too Short";
+        temp.confirmPassword = values.password === values.confirmPassword ? "" : "Password Doesn't Match";
         setErrors(temp);
         return Object.values(temp).every(x => x === "");        
     }
