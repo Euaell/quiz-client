@@ -11,7 +11,7 @@ import {Add} from "./components/Nerd/Add";
 import {Edit} from "./components/Nerd/Edit";
 import Order from "./components/Nerd/Order";
 import {Orders} from "./components/Nerd/Orders";
-import Services from "./components/Nerd/Services";
+import Services, {AdminServices} from "./components/Nerd/Services";
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
 						<Route path="/add" element={<Add />} />
 						<Route path="/viewOrders" element={<Orders />} />
 						<Route path="/edit" element={<Edit />} />
+						<Route path="/viewServices" element={<AdminServices />} />
 					</Route>
 					<Route path="/order" element={<Order />} />
 				</Route>

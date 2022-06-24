@@ -8,7 +8,8 @@ export const ENDPOINTS = {
     user: "user",
     login: "login",
     item: "item",
-    order: "order"
+    order: "order",
+    services: "services",
 }
 
 export const createAPIEndpoint = endpoint => {

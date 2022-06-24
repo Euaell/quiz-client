@@ -50,6 +50,20 @@ const getOrder = () => {
     return JSON.parse(localStorage.getItem("order"));
 }
 
+const getService = () => {
+    if (localStorage.getItem("service") === null) {
+        localStorage.setItem("service", JSON.stringify(
+            {
+                serviceId: null,
+                name: "",
+                price: 0,
+                description: ""
+            }
+        ))
+    }
+    return JSON.parse(localStorage.getItem("service"));
+}
+
 // localStorage.setItem('key', obj)
 // localStorage.getItem('key')
 // localStorage.removeItem('key')
@@ -58,6 +72,7 @@ export default function useStateContext() {
     const {context, setContext} = useContext(stateContext);
     const {item, setItem} = useContext(stateContext);
     const {order, setOrder} = useContext(stateContext);
+    const {service, setService} = useContext(stateContext);
     
     return { 
         context, 
@@ -83,6 +98,14 @@ export default function useStateContext() {
         resetOrder: () => {
             localStorage.removeItem("order");
             setOrder(getOrder())
+        },
+        service,
+        setService: obj => {
+            setService({...service, ...obj})
+        },
+        resetService: () => {
+            localStorage.removeItem("service");
+            setService(getService())
         }
     }
 }
@@ -91,15 +114,23 @@ export function ContextProvider({children}) {
     const [context, setContext] = useState(getFreshContext());
     const [item, setItem] = useState(getItem());
     const [order, setOrder] = useState(getOrder());
+    const [service, setService] = useState(getService());
     
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(context));
+    }, [context]);
+    useEffect(() => {
         localStorage.setItem("item", JSON.stringify(item));
+    }, [item]);
+    useEffect(() => {
         localStorage.setItem("order", JSON.stringify(order));
-    }, [context, item, order]);
-
+    }, [order]);
+    useEffect(() => {
+        localStorage.setItem("service", JSON.stringify(service));
+    }, [service]);
+    
     return (
-        <stateContext.Provider value={{context, setContext, item, setItem, order, setOrder}}>
+        <stateContext.Provider value={{context, setContext, item, setItem, order, setOrder, service, setService }}>
             {children}
         </stateContext.Provider>
   )

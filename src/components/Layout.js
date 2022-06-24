@@ -51,12 +51,21 @@ export default function Layout() {
 							>
 								Machines
 							</Button>
-							<Button
-								onClick={() => navigate("/services")}
-								sx={{ my: 2, color: 'white', display: 'block' }}
-							>
-								Services
-							</Button>
+							{context.IsAdmin === "true" ?
+								<Button
+									onClick={() => navigate("/viewServices")}
+									sx={{ my: 2, color: 'white', display: 'block' }}
+								>
+									Services
+								</Button> :
+								<Button
+									onClick={() => navigate("/services")}
+									sx={{ my: 2, color: 'white', display: 'block' }}
+								>
+									Services
+								</Button>
+							}
+							
 						</Box>
 						{context.name &&
 							<Typography variant="h5"
